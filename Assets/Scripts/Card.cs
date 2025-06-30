@@ -12,7 +12,7 @@ public class Card : MonoBehaviour
     public Animator anim;
 
     //AudioSource audioSource;
-    //public AudioClip clip;
+    ////public AudioClip clip;
 
     public SpriteRenderer frontImage;
 
