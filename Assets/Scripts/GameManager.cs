@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public GameObject endTxT;
     public Text timeTxt;
     float time = 0.0f;
+    AudioSource audioSource;
 
     void Awake()
     {
