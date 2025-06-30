@@ -26,8 +26,13 @@ public class Board : MonoBehaviour
             float x = (i % 4) * 1.4f - 2.1f;
             float y = (i / 4) * 1.4f - 3.0f;
 
-            go.transform.position = new Vector2(x,y);
             go.GetComponent<Card>().Setting(arr[i]);
+            go.transform.position = new Vector2(0, 0);
+
+            Card tempCard = go.GetComponent<Card>();
+            tempCard.Setting(arr[i]);
+
+            tempCard.GetComponent<CardMover>().Show(new Vector2(x, y), tempCard, i);
 
         }
     }

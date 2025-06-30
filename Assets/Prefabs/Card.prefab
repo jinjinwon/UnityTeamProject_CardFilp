@@ -317,6 +317,7 @@ GameObject:
   - component: {fileID: 3541633712808921268}
   - component: {fileID: 26157001020081386}
   - component: {fileID: 8844971917669912940}
+  - component: {fileID: 3599484755529608323}
   m_Layer: 0
   m_Name: Card
   m_TagString: Untagged
@@ -476,6 +477,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3599484755529608323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1940621147247431291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bfa7da646b2e4a4b8559345ec5326c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _card: {fileID: 0}
+  moveDuration: 0.5
+  delayBetween: 0.1
+  moveEase: 27
+  startScale: {x: 0.5, y: 0.5, z: 0.5}
+  endScale: {x: 1, y: 1, z: 1}
 --- !u!1 &6694483099029697532
 GameObject:
   m_ObjectHideFlags: 0
