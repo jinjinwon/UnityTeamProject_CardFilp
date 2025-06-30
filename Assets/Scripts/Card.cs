@@ -21,6 +21,7 @@ public class Card : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
     }
+    */
     public void Setting(int number)
     {
         idx = number;
@@ -70,5 +71,5 @@ public class Card : MonoBehaviour
         front.SetActive(false);
         back.SetActive(true);
     }
-    */
+    
 }
