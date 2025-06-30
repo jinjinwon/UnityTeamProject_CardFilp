@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cards: {fileID: 0}
-  card: {fileID: 0}
+  card: {fileID: 1940621147247431291, guid: 7f06e4f13dbc06540b09717f52da7f3b, type: 3}
 --- !u!4 &377542762
 Transform:
   m_ObjectHideFlags: 0

@@ -357,6 +357,7 @@ MonoBehaviour:
   front: {fileID: 119440478923389091}
   back: {fileID: 820312256605539580}
   anim: {fileID: 0}
+  clip: {fileID: 8300000, guid: 5a1d7cb054c125248b8fb6217e5d770f, type: 3}
   frontImage: {fileID: 0}
 --- !u!95 &26157001020081386
 Animator:
@@ -386,7 +387,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1940621147247431291}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
