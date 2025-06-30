@@ -35,9 +35,8 @@ public class GameManager : MonoBehaviour
         timeTxt.text = time.ToString("N2");
     }
 
-    public void Matched();
+    public void Matched()
     {
 
     }
-
 }
