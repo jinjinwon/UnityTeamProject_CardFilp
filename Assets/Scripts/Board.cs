@@ -12,13 +12,13 @@ public class Board : MonoBehaviour
     private void Start()
     {
 
-        int[] arr = {0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7};
-        arr = arr.OrderBy(x => Random.Range(0f, 7f)).ToArray();
+        int[] arr = {1, 1, 2, 2, 3, 3, 4, 4, 5, 5};
+        arr = arr.OrderBy(x => Random.Range(1f, 6f)).ToArray();
 
         GameManager.Instance.cardCount = arr.Length;
 
 
-        for(int i=0; i<16; i++)
+        for(int i=0; i<10; i++)
         {
             GameObject go = Instantiate(card, this.transform);
             go.transform.parent = cards;
