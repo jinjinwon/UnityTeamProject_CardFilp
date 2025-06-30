@@ -490,6 +490,7 @@ MonoBehaviour:
   endTxt: {fileID: 5817159947360889711}
   timeTxt: {fileID: 1787993593145063994}
   clip: {fileID: 0}
+  alarm: {fileID: 0}
   cardCount: 0
 --- !u!4 &1149106819
 Transform:

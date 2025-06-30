@@ -16,7 +16,9 @@ public class Card : MonoBehaviour
 
     public SpriteRenderer frontImage;
 
-    
+    public Vector2 fixedSize = new Vector2(1f, 1f);
+
+
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -26,7 +28,24 @@ public class Card : MonoBehaviour
     {
         idx = number;
         frontImage.sprite = Resources.Load<Sprite>($"Team_{idx}");
+
+        if (frontImage.sprite != null)
+        {
+            frontImage.transform.localScale = Vector3.one;
+
+            float spriteWidth = frontImage.sprite.bounds.size.x;
+            float spriteHeight = frontImage.sprite.bounds.size.y;
+
+            float targetWidth = 1f;  
+            float targetHeight = 1f;
+
+            float scaleX = targetWidth / spriteWidth;
+            float scaleY = targetHeight / spriteHeight;
+
+            frontImage.transform.localScale = new Vector3(scaleX, scaleY, 1f);
+        }
     }
+
 
     public void OpenCard()
     {
