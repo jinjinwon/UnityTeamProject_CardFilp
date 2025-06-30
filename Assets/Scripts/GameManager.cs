@@ -1,4 +1,3 @@
-using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting.Antlr3.Runtime.Tree;
@@ -18,9 +17,10 @@ public class GameManager : MonoBehaviour
     float time = 0.0f;
     AudioSource audioSource;
     public AudioClip clip;
-    public AudioClip alarm;
     public int cardCount = 0;
-
+    public int maxCardCount = 0;
+    public float closedSpeed = 0.0f;
+    
     void Awake()
     {
         if (Instance == null)
@@ -42,16 +42,6 @@ public class GameManager : MonoBehaviour
         {
             Time.timeScale = 0.0f;
             endTxt.SetActive(true);
-        }
-        if (time>25f)
-        {
-            PlayAlarm();
-        }
-       void PlayAlarm()
-        {
-            audioSource.clip = alarm;
-            audioSource.loop = true;
-            audioSource.Play();
         }
     }
 
