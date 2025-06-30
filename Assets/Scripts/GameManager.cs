@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     public Card secondCard;
     public GameObject endTxt;
     public Text timeTxt;
-    float time = 0.0f;
+    float time = 30.0f;
     AudioSource audioSource;
     public AudioClip clip;
     public AudioClip alarm;
@@ -36,15 +36,15 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        time += Time.deltaTime;
+        time -= Time.deltaTime;
         timeTxt.text = time.ToString("N2");
-        if (time >= 30f)
+        if (time <= 0f)
         {
-            time = 30f;
+            time = 0f;
             Time.timeScale = 0.0f;
             endTxt.SetActive(true);
         }
-        if (time>25f)
+        if (time<5f)
         {
             PlayAlarm();
         }
