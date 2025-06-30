@@ -5,10 +5,10 @@ using System.Linq;
 
 public class Board : MonoBehaviour
 {
-    //public Transform cards;
+    public Transform cards;
     public GameObject card;
 
-    /*
+    
     private void Start()
     {
 
@@ -21,6 +21,7 @@ public class Board : MonoBehaviour
         for(int i=0; i<16; i++)
         {
             GameObject go = Instantiate(card, this.transform);
+            go.transform.parent = cards;
 
             float x = (i % 4) * 1.4f - 2.1f;
             float y = (i / 4) * 1.4f - 3.0f;
@@ -30,5 +31,5 @@ public class Board : MonoBehaviour
 
         }
     }
-    */
+    
 }
