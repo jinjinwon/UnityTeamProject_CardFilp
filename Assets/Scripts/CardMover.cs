@@ -25,7 +25,7 @@ public class CardMover : MonoBehaviour
 
         Transform tf = _card.transform;
 
-        // 초기화: 중앙(0,0,0), 스케일 startScale
+        // 초기화
         tf.localPosition = Vector3.zero;
         tf.localScale = startScale;
 
