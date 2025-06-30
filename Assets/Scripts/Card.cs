@@ -11,17 +11,17 @@ public class Card : MonoBehaviour
 
     public Animator anim;
 
-    //AudioSource audioSource;
-    ////public AudioClip clip;
+    AudioSource audioSource;
+    public AudioClip clip;
 
     public SpriteRenderer frontImage;
 
-    /*
+    
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
     }
-    */
+
     public void Setting(int number)
     {
         idx = number;
@@ -32,7 +32,7 @@ public class Card : MonoBehaviour
     {
         if (GameManager.Instance.secondCard != null) return;
 
-        //audioSource.PlayOneShot(clip);
+        audioSource.PlayOneShot(clip);
         anim.SetBool("isOpen", true);
         front.SetActive(true);
         back.SetActive(false);
