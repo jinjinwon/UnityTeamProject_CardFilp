@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45d06460da333ed4a84c3644fca1f650, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cards: {fileID: 0}
   card: {fileID: 0}
 --- !u!4 &377542762
 Transform:
