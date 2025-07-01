@@ -110,5 +110,24 @@ public class Card : MonoBehaviour
     {
         anim.SetBool("isClose", false);
     }
-    
+
+    public IEnumerator StartLookDelay1()
+    {
+        LookCard();
+        yield return new WaitForSeconds(3f);
+        DontLook();
+    }
+
+    public void LookCard()
+    {
+        anim.SetBool("isOpen", true);
+        front.SetActive(true);
+        back.SetActive(false);
+    }
+    public void DontLook()
+    {
+        anim.SetBool("isOpen", false);
+        front.SetActive(false);
+        back.SetActive(true);
+    }
 }
