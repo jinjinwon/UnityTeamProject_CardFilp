@@ -10,12 +10,12 @@ public class StageManager : MonoBehaviour
 {
     public static StageManager _instance;
 
-    // ¿ÜºÎ¿¡¼­ È¤½Ã »ý¼ºÀÌ µÇÁö ¾Ê¾Ò´Âµ¥ Á¢±ÙÇÑ °æ¿ì¸¦ À§ÇÑ ÇÁ·ÎÆÛÆ¼
+    // ï¿½ÜºÎ¿ï¿½ï¿½ï¿½ È¤ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¾Ò´Âµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ì¸¦ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¼
     public static StageManager Instance
     {
         get
         {
-            // ÀÎ½ºÅÏ½º°¡ ¾ÆÁ÷ ¾ø´Ù¸é »õ·Î »ý¼º
+            // ï¿½Î½ï¿½ï¿½Ï½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             if (_instance == null)
             {
                 var go = new GameObject(nameof(StageManager));
@@ -38,7 +38,7 @@ public class StageManager : MonoBehaviour
 
     private void Awake()
     {
-        // Á¤»ó ·çÆ®·Î Á¢±Ù ÇÑ °æ¿ì
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½
         if (_instance == null)
         {
             _instance = this;
@@ -78,11 +78,16 @@ public class StageManager : MonoBehaviour
     
     public Stage GetCurrentStage()
     {
-        // ¿¹¿ÜÃ³¸® (¸ÞÀÎ½Å¿¡¼­ ¹Ù·Î Å×½ºÆ®ÇÏ´Â °æ¿ì)
+        // ï¿½ï¿½ï¿½ï¿½Ã³ï¿½ï¿½ (ï¿½ï¿½ï¿½Î½Å¿ï¿½ï¿½ï¿½ ï¿½Ù·ï¿½ ï¿½×½ï¿½Æ®ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½)
         if (stageList == null)
             return null;
 
         return stageList[currentStage];
     }
-
+    
+    public void IncreaseStageLevel()
+    {
+        
+        PlayerPrefs.SetInt("StageLevel", currentStage + 1);
+    }
 }
