@@ -26,6 +26,8 @@ public class GameManager : MonoBehaviour
     public AlarmAnim alarmAnim;
     private bool bAlarm = false;
 
+    [SerializeField] private ResultPanel resultPanel;
+
     public void Awake()
     {
         if (Instance == null)
@@ -54,7 +56,8 @@ public class GameManager : MonoBehaviour
         if (time <= 0.0f)
         {
             Time.timeScale = 0.0f;
-            failEndTxt.SetActive(true);
+            //failEndTxt.SetActive(true);
+            resultPanel.Show(false, "실패..");
             StopAlarm();
         }
 
@@ -95,9 +98,11 @@ public class GameManager : MonoBehaviour
                 SuccEndTxt.SetActive(true);
                 audioSource.PlayOneShot(complete);
                 StopAlarm();
-                
+
+                resultPanel.Show(true, "성공!");
+
                 // Stage level increased when stage clear
-                StageManager.Instance.IncreaseStageLevel();
+                //StageManager.Instance.IncreaseStageLevel();
             }
         }
         else
