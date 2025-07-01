@@ -17,11 +17,13 @@ public class Card : MonoBehaviour
     public SpriteRenderer frontImage;
 
     public Vector2 fixedSize = new Vector2(1f, 1f);
-
+    
+    private float closedSpeed = 1.0f;
 
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        closedSpeed = StageManager.Instance.GetCurrentStage().closedSpeed;
     }
 
     public void Setting(int number)
@@ -56,25 +58,25 @@ public class Card : MonoBehaviour
         front.SetActive(true);
         back.SetActive(false);
 
-        //first°¡ ºñ¾ú´Ù¸é
+        //firstï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ù¸ï¿½
         if (GameManager.Instance.firstCard == null)
         {
-            //firstCard¿¡ ³» Á¤º¸¸¦ ³Ñ°ÜÁØ´Ù
+            //firstCardï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ°ï¿½ï¿½Ø´ï¿½
             GameManager.Instance.firstCard = this;
         }
-        //firstCard°¡ ºñ¾îÀÖÁö ¾Ê´Ù¸é.
+        //firstCardï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´Ù¸ï¿½.
         else
         {
-            //secondCard¿¡ ³» Á¤º¸¸¦ ³Ñ°ÜÁØ´Ù
+            //secondCardï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ°ï¿½ï¿½Ø´ï¿½
             GameManager.Instance.secondCard = this;
-            //Mached ÇÔ¼ö¸¦ È£Ãâ
+            //Mached ï¿½Ô¼ï¿½ï¿½ï¿½ È£ï¿½ï¿½
             GameManager.Instance.Matched();
         }
     }
 
     public void DestroyCard()
     {
-        Invoke("DestroyCardInvoke", 1.0f);
+        Invoke("DestroyCardInvoke", closedSpeed);
     }
     void DestroyCardInvoke()
     {
@@ -82,7 +84,7 @@ public class Card : MonoBehaviour
     }
     public void CloseCard()
     {
-        Invoke("CloseCardInvoke", 1.0f);
+        Invoke("CloseCardInvoke", closedSpeed);
         //Invoke("CloseCardInvoke2", 1.0f);
     }
     void CloseCardInvoke()

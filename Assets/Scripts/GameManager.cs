@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 
 public class GameManager : MonoBehaviour
+
 {
     public static GameManager Instance;
     public Card firstCard;
@@ -25,12 +26,6 @@ public class GameManager : MonoBehaviour
 
     public AlarmAnim alarmAnim;
     private bool bAlarm = false;
-
-    public void Awake()
-    {
-        if (Instance == null)
-            Instance = this;
-    }
 
     void Start()
     {
@@ -95,6 +90,9 @@ public class GameManager : MonoBehaviour
                 SuccEndTxt.SetActive(true);
                 audioSource.PlayOneShot(complete);
                 StopAlarm();
+                
+                // Clear stages to increase level.
+                StageManager.Instance.IncreaseStageLevel();
             }
         }
         else
