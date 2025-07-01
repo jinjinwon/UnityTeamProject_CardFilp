@@ -47,35 +47,30 @@ public class Card : MonoBehaviour
     }
 
 
-    public void OpenCard()
+public void OpenCard()
+{
+    // 이미 열려있으면 아무것도 하지 않음
+    if (GameManager.Instance.secondCard != null)
     {
-        // 이미 열려있으면 아무것도 하지 않음
-        if (GameManager.Instance.secondCard != null)
-        {
-            GameManager.Instance.firstCard.CloseCard();
-            GameManager.Instance.secondCard.CloseCard();
+        // 현재 열린 두 장을 닫고 새로운 카드부터 다시 시작
+        GameManager.Instance.firstCard.CloseCard();
+        GameManager.Instance.secondCard.CloseCard();
 
-            GameManager.Instance.firstCard = null;
-            GameManager.Instance.secondCard = null;
-        }
+        GameManager.Instance.firstCard = null;
+        GameManager.Instance.secondCard = null;
+    }
 
-        audioSource.PlayOneShot(clip);
-        anim.SetBool("isOpen", true);
-        front.SetActive(true);
-        back.SetActive(false);
+    audioSource.PlayOneShot(clip);
+    anim.SetBool("isOpen", true);
+    front.SetActive(true);
+    back.SetActive(false);
 
-        // 폭탄 카드면 바로 시간 감소 후 종료
-        if (idx == -1)
-        {
-            GameManager.Instance.ReduceTimeByBomb();
-            DestroyCard();
-            return;
-        }
-
+        // 첫 번째 카드가 비었으면 나 자신을 첫 번째 카드로 설정
         if (GameManager.Instance.firstCard == null)
         {
             GameManager.Instance.firstCard = this;
         }
+        // 첫 번째 카드가 이미 있으면 나 자신을 두 번째 카드로 설정 후 매칭 체크
         else if (GameManager.Instance.secondCard == null)
         {
             GameManager.Instance.secondCard = this;
@@ -84,18 +79,17 @@ public class Card : MonoBehaviour
     }
 
 
-
     public void DestroyCard()
     {
         Invoke("DestroyCardInvoke", 1.0f);
     }
     void DestroyCardInvoke()
     {
-        Destroy(gameObject, 1.0f);
+        Destroy(gameObject);
     }
     public void CloseCard()
     {
-        Invoke("CloseCardInvoke", 0.5f);
+        Invoke("CloseCardInvoke", 1.0f);
         //Invoke("CloseCardInvoke2", 1.0f);
     }
     void CloseCardInvoke()
@@ -110,24 +104,5 @@ public class Card : MonoBehaviour
     {
         anim.SetBool("isClose", false);
     }
-
-    public IEnumerator StartLookDelay1()
-    {
-        LookCard();
-        yield return new WaitForSeconds(3f);
-        DontLook();
-    }
-
-    public void LookCard()
-    {
-        anim.SetBool("isOpen", true);
-        front.SetActive(true);
-        back.SetActive(false);
-    }
-    public void DontLook()
-    {
-        anim.SetBool("isOpen", false);
-        front.SetActive(false);
-        back.SetActive(true);
-    }
+    
 }

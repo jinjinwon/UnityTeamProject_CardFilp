@@ -91,7 +91,7 @@ public class GameManager : MonoBehaviour
 
             if (cardCount == 0)
             {
-                //Time.timeScale = 0.0f;    0���� ����� ���� ��ƼŬ�� �ȳ��ͼ� �ּ���
+                //Time.timeScale = 0.0f;   
                 SuccEndTxt.SetActive(true);
                 audioSource.PlayOneShot(complete);
                 StopAlarm();
