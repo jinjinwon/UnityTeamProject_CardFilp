@@ -83,12 +83,19 @@ public class Card : MonoBehaviour
     public void CloseCard()
     {
         Invoke("CloseCardInvoke", 1.0f);
+        //Invoke("CloseCardInvoke2", 1.0f);
     }
     void CloseCardInvoke()
     {
         anim.SetBool("isOpen", false);
+        //anim.SetBool("isClose", true);
         front.SetActive(false);
         back.SetActive(true);
+        Invoke("CloseCardInvoke2", 1.0f);
+    }
+    void CloseCardInvoke2()
+    {
+        anim.SetBool("isClose", false);
     }
     
 }
