@@ -52,5 +52,9 @@ public class StageManager : MonoBehaviour
     {
         return stageList[currentStage];
     }
-
+    
+    public void IncreaseStageLevel()
+    {
+        PlayerPrefs.SetInt("StageLevel", currentStage + 1);
+    }
 }
