@@ -7,7 +7,7 @@ public class SceneLoader : MonoBehaviour
 {
     public void StartBtn()
     {
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene("StageScene");
     }
    
   
