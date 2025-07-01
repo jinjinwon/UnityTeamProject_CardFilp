@@ -13,7 +13,8 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public Card firstCard;
     public Card secondCard;
-    public GameObject endTxt;
+    public GameObject failEndTxt;   //실패 했을때 끝 UI
+    public GameObject SuccEndTxt;   //성공 했을때 끝 UI
     public Text timeTxt;
     public float time = 30.0f;
     AudioSource audioSource;
@@ -47,12 +48,12 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        time -= Time.deltaTime;
+        if(cardCount != 0) { time -= Time.deltaTime; }
         timeTxt.text = time.ToString("N2");
         if (time <= 0.0f)
         {
             Time.timeScale = 0.0f;
-            endTxt.SetActive(true);
+            failEndTxt.SetActive(true);
         }
         if (time > 25f)
         {
@@ -77,8 +78,8 @@ public class GameManager : MonoBehaviour
             cardCount -= 2;
             if (cardCount == 0)
             {
-                Time.timeScale = 0.0f;
-                endTxt.SetActive(true);
+                //Time.timeScale = 0.0f;    0으로 만들면 폭축 파티클이 안나와서 주석함
+                SuccEndTxt.SetActive(true);
             }
         }
         else
