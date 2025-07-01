@@ -80,9 +80,12 @@ public class Card : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+    [Header("Invoke 타이밍 조절 변수")]
+    public float ftimer = 0.1f;
     public void CloseCard()
     {
-        Invoke("CloseCardInvoke", 1.0f);
+        Invoke("CloseCardInvoke", ftimer);
         //Invoke("CloseCardInvoke2", 1.0f);
     }
     void CloseCardInvoke()
@@ -91,7 +94,7 @@ public class Card : MonoBehaviour
         //anim.SetBool("isClose", true);
         front.SetActive(false);
         back.SetActive(true);
-        Invoke("CloseCardInvoke2", 1.0f);
+        Invoke("CloseCardInvoke2", ftimer);
     }
     void CloseCardInvoke2()
     {
