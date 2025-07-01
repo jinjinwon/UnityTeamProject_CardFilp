@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Stage : MonoBehaviour
+[CreateAssetMenu]
+public class Stage : ScriptableObject
 {
     public int level;
     public int maxCardCount;
     public float time;
     public float closedSpeed;
-    
 }

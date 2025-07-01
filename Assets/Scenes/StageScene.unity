@@ -136,7 +136,6 @@ GameObject:
   - component: {fileID: 34403313}
   - component: {fileID: 34403312}
   - component: {fileID: 34403315}
-  - component: {fileID: 34403316}
   - component: {fileID: 34403317}
   m_Layer: 5
   m_Name: Stage2
@@ -274,22 +273,6 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 10, y: -10}
   m_UseGraphicAlpha: 1
---- !u!114 &34403316
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 34403310}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c36fb7e5fbc1da40bdcc09924082ee7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  level: 1
-  maxCardCount: 9
-  time: 20
-  closedSpeed: 0.5
 --- !u!114 &34403317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -315,7 +298,6 @@ GameObject:
   - component: {fileID: 341624446}
   - component: {fileID: 341624445}
   - component: {fileID: 341624448}
-  - component: {fileID: 341624449}
   - component: {fileID: 341624450}
   m_Layer: 5
   m_Name: Stage1
@@ -453,22 +435,6 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 10, y: -10}
   m_UseGraphicAlpha: 1
---- !u!114 &341624449
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 341624443}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c36fb7e5fbc1da40bdcc09924082ee7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  level: 0
-  maxCardCount: 9
-  time: 30
-  closedSpeed: 1
 --- !u!114 &341624450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -494,7 +460,6 @@ GameObject:
   - component: {fileID: 632819236}
   - component: {fileID: 632819235}
   - component: {fileID: 632819238}
-  - component: {fileID: 632819239}
   - component: {fileID: 632819240}
   m_Layer: 5
   m_Name: Stage3
@@ -632,22 +597,6 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 10, y: -10}
   m_UseGraphicAlpha: 1
---- !u!114 &632819239
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 632819233}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c36fb7e5fbc1da40bdcc09924082ee7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  level: 2
-  maxCardCount: 16
-  time: 30
-  closedSpeed: 1
 --- !u!114 &632819240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -823,8 +772,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83e2a2a319097d54582602bf2386852c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageDeck: {fileID: 1112130305}
   currentStage: 0
+  stageList:
+  - {fileID: 11400000, guid: 47258901f92997044ab9bb92eeeedc7b, type: 2}
+  - {fileID: 11400000, guid: 85cc5180f8f87dc4286f935cb2f674ef, type: 2}
+  - {fileID: 11400000, guid: 4c74e56f4da5d7b48b6807a8628d87b4, type: 2}
+  - {fileID: 11400000, guid: 4673898fe1000bb4a91ec90258683c7e, type: 2}
 --- !u!4 &1322036968
 Transform:
   m_ObjectHideFlags: 0
@@ -1069,7 +1022,6 @@ GameObject:
   - component: {fileID: 1884037933}
   - component: {fileID: 1884037932}
   - component: {fileID: 1884037931}
-  - component: {fileID: 1884037930}
   - component: {fileID: 1884037929}
   m_Layer: 5
   m_Name: Stage4
@@ -1110,22 +1062,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a2b90181da17f94b956c8e19809cb8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1884037930
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1884037927}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c36fb7e5fbc1da40bdcc09924082ee7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  level: 3
-  maxCardCount: 16
-  time: 20
-  closedSpeed: 1
 --- !u!114 &1884037931
 MonoBehaviour:
   m_ObjectHideFlags: 0
