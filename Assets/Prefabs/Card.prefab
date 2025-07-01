@@ -527,7 +527,7 @@ MonoBehaviour:
   delayBetween: 0.1
   moveEase: 27
   startScale: {x: 0.5, y: 0.5, z: 0.5}
-  endScale: {x: 1, y: 1, z: 1}
+  endScale: {x: 1.5, y: 1.5, z: 1.5}
 --- !u!1 &6694483099029697532
 GameObject:
   m_ObjectHideFlags: 0

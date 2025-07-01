@@ -36,8 +36,8 @@ public class Card : MonoBehaviour
             float spriteWidth = frontImage.sprite.bounds.size.x;
             float spriteHeight = frontImage.sprite.bounds.size.y;
 
-            float targetWidth = 1f;  
-            float targetHeight = 1.2f;
+            float targetWidth = 0.8f;
+            float targetHeight = 1f;
 
             float scaleX = targetWidth / spriteWidth;
             float scaleY = targetHeight / spriteHeight;
@@ -80,12 +80,9 @@ public class Card : MonoBehaviour
     {
         Destroy(gameObject);
     }
-
-    [Header("Invoke 타이밍 조절 변수")]
-    public float ftimer = 0.1f;
     public void CloseCard()
     {
-        Invoke("CloseCardInvoke", ftimer);
+        Invoke("CloseCardInvoke", 1.0f);
         //Invoke("CloseCardInvoke2", 1.0f);
     }
     void CloseCardInvoke()
@@ -94,7 +91,7 @@ public class Card : MonoBehaviour
         //anim.SetBool("isClose", true);
         front.SetActive(false);
         back.SetActive(true);
-        Invoke("CloseCardInvoke2", ftimer);
+        Invoke("CloseCardInvoke2", 1.0f);
     }
     void CloseCardInvoke2()
     {
