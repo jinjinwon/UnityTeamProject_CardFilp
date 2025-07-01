@@ -21,19 +21,26 @@ public class GameManager : MonoBehaviour
     public AudioClip alarm;
     public int cardCount = 0;
     public Stage stage;
-    
+
     void Awake()
     {
         if (Instance == null)
+        {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else if (Instance != this)
+        {
+            Destroy(gameObject);
+        }
     }
-    // Start is called before the first frame update
+
     void Start()
     {
         Time.timeScale = 1.0f;
         audioSource = GetComponent<AudioSource>();
         stage = StageManager.Instance.GetCurrentStage();
-        
+
         time = stage.time;
     }
 
@@ -47,16 +54,17 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 0.0f;
             endTxt.SetActive(true);
         }
-        if (time>25f)
+        if (time > 25f)
         {
-            PlayAlarm(); 
+            PlayAlarm();
         }
-       void PlayAlarm()
-        {
-            audioSource.clip = alarm;
-            audioSource.loop = true;
-            audioSource.Play();
-        }
+    }
+
+    private void PlayAlarm()
+    {
+        audioSource.clip = alarm;
+        audioSource.loop = true;
+        audioSource.Play();
     }
 
     public void Matched()
@@ -81,6 +89,6 @@ public class GameManager : MonoBehaviour
         firstCard = null;
         secondCard = null;
 
-       
+
     }
 }
