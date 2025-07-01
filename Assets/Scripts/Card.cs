@@ -88,11 +88,8 @@ public class Card : MonoBehaviour
     public float ftimer = 0.1f;
     public void CloseCard()
     {
-<<<<<<< HEAD
-        Invoke("CloseCardInvoke", closedSpeed);
-=======
+
         Invoke("CloseCardInvoke", ftimer);
->>>>>>> fdfa2eb568adcca23ee0c85b78951b80d24fc1db
         //Invoke("CloseCardInvoke2", 1.0f);
     }
     void CloseCardInvoke()
