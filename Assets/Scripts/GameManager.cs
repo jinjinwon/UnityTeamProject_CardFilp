@@ -15,12 +15,13 @@ public class GameManager : MonoBehaviour
     public Card secondCard;
     public GameObject endTxt;
     public Text timeTxt;
-    float time = 30.0f;
+    public float time = 30.0f;
     AudioSource audioSource;
     public AudioClip clip;
     public AudioClip alarm;
     public int cardCount = 0;
-
+    public Stage stage;
+    
     void Awake()
     {
         if (Instance == null)
@@ -31,21 +32,24 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1.0f;
         audioSource = GetComponent<AudioSource>();
+        stage = StageManager.Instance.GetCurrentStage();
+        
+        time = stage.time;
     }
 
     // Update is called once per frame
     void Update()
     {
-        time += Time.deltaTime;
+        time -= Time.deltaTime;
         timeTxt.text = time.ToString("N2");
-        if (time > 30f)
+        if (time <= 0.0f)
         {
             Time.timeScale = 0.0f;
             endTxt.SetActive(true);
         }
         if (time>25f)
         {
-            PlayAlarm();
+            PlayAlarm(); 
         }
        void PlayAlarm()
         {
