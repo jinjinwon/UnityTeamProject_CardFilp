@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     public AudioClip alarm;
     public int cardCount = 0;
     public Stage stage;
-
+    public AudioClip complete;
     void Awake()
     {
         if (Instance == null)
@@ -84,6 +84,7 @@ public class GameManager : MonoBehaviour
             {
                 //Time.timeScale = 0.0f;    0���� ����� ���� ��ƼŬ�� �ȳ��ͼ� �ּ���
                 SuccEndTxt.SetActive(true);
+                audioSource.PlayOneShot(complete);
             }
         }
         else

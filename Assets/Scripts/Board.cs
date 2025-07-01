@@ -22,9 +22,8 @@ public class Board : MonoBehaviour
         {
             GameObject go = Instantiate(card, this.transform);
             go.transform.parent = cards;
-
             float x = (i % 4) * 1.4f - 2.1f;
-            float y = (i / 4) * 1.4f - 3.0f;
+            float y = (i / 4) * 1.6f - 3.0f;
 
             go.transform.position = new Vector2(0, 0);
 
