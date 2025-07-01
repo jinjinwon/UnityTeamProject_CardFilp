@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.UI;
+using Unity.VisualScripting;
 
 public class SettingsButton : MonoBehaviour
 {
+    public GameObject SettingsOpen;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -15,4 +19,13 @@ public class SettingsButton : MonoBehaviour
     {
         
     }
+
+    public void ClickSetting()
+    {
+        SettingsOpen.SetActive(true);
+    }
+
+
+
+
 }
