@@ -18,6 +18,8 @@ public class Card : MonoBehaviour
 
     public Vector2 fixedSize = new Vector2(1f, 1f);
 
+    public static bool canClick = true;
+
 
     private void Start()
     {
@@ -47,35 +49,43 @@ public class Card : MonoBehaviour
     }
 
 
-public void OpenCard()
-{
-    // �̹� ���������� �ƹ��͵� ���� ����
-    if (GameManager.Instance.secondCard != null)
+    public void OpenCard()
     {
-        // ���� ���� �� ���� �ݰ� ���ο� ī����� �ٽ� ����
-        GameManager.Instance.firstCard.CloseCard();
-        GameManager.Instance.secondCard.CloseCard();
+        if (!canClick) return; // 클릭 잠금 시 무시
 
-        GameManager.Instance.firstCard = null;
-        GameManager.Instance.secondCard = null;
-    }
+        // 애니메이션 중엔 클릭 금지
+        canClick = false;
 
-    audioSource.PlayOneShot(clip);
-    anim.SetBool("isOpen", true);
-    front.SetActive(true);
-    back.SetActive(false);
+        if (GameManager.Instance.secondCard != null)
+        {
+            GameManager.Instance.firstCard.CloseCard();
+            GameManager.Instance.secondCard.CloseCard();
 
-        // ù ��° ī�尡 ������� �� �ڽ��� ù ��° ī��� ����
+            GameManager.Instance.firstCard = null;
+            GameManager.Instance.secondCard = null;
+        }
+
+        audioSource.PlayOneShot(clip);
+        anim.SetBool("isOpen", true);
+        front.SetActive(true);
+        back.SetActive(false);
+
         if (GameManager.Instance.firstCard == null)
         {
             GameManager.Instance.firstCard = this;
         }
-        // ù ��° ī�尡 �̹� ������ �� �ڽ��� �� ��° ī��� ���� �� ��Ī üũ
         else if (GameManager.Instance.secondCard == null)
         {
             GameManager.Instance.secondCard = this;
             GameManager.Instance.Matched();
         }
+
+        // 애니메이션 끝나고 다시 클릭 가능하도록 타이머 설정
+        Invoke(nameof(EnableClick), 0.5f); // 애니메이션 길이에 따라 조절
+    }
+    void EnableClick()
+    {
+        canClick = true;
     }
 
 
