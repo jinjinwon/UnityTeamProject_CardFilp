@@ -1,4 +1,3 @@
-using System;
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,7 +8,6 @@ using UnityEngine.UI;
 
 
 public class GameManager : MonoBehaviour
-
 {
     public static GameManager Instance;
     public Card firstCard;
@@ -27,15 +25,13 @@ public class GameManager : MonoBehaviour
 
     public AlarmAnim alarmAnim;
     private bool bAlarm = false;
-    
-    private void Awake()
+
+    public void Awake()
     {
         if (Instance == null)
-        {
             Instance = this;
-        }
     }
-    
+
     void Start()
     {
         Time.timeScale = 1.0f;
@@ -100,7 +96,7 @@ public class GameManager : MonoBehaviour
                 audioSource.PlayOneShot(complete);
                 StopAlarm();
                 
-                // Clear stages to increase level.
+                // Stage level increased when stage clear
                 StageManager.Instance.IncreaseStageLevel();
             }
         }

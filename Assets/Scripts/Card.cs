@@ -49,7 +49,7 @@ public class Card : MonoBehaviour
 
     public void OpenCard()
     {
-        // �̹� ���������� �ƹ��͵� ���� ����
+        // 이미 열려있으면 아무것도 하지 않음
         if (GameManager.Instance.secondCard != null)
         {
             GameManager.Instance.firstCard.CloseCard();
@@ -64,7 +64,7 @@ public class Card : MonoBehaviour
         front.SetActive(true);
         back.SetActive(false);
 
-        // ��ź ī��� �ٷ� �ð� ���� �� ����
+        // 폭탄 카드면 바로 시간 감소 후 종료
         if (idx == -1)
         {
             GameManager.Instance.ReduceTimeByBomb();
