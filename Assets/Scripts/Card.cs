@@ -45,55 +45,58 @@ public class Card : MonoBehaviour
             frontImage.transform.localScale = new Vector3(scaleX, scaleY, 1f);
         }
     }
-
-
+    
+    
     public void OpenCard()
     {
-        // ÀÌ¹Ì ¿­·ÁÀÖÀ¸¸é ¾Æ¹«°Íµµ ÇÏÁö ¾ÊÀ½
+        // ï¿½Ì¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Æ¹ï¿½ï¿½Íµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         if (GameManager.Instance.secondCard != null)
         {
-            // ÇöÀç ¿­¸° µÎ ÀåÀ» ´Ý°í »õ·Î¿î Ä«µåºÎÅÍ ´Ù½Ã ½ÃÀÛ
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ý°ï¿½ ï¿½ï¿½ï¿½Î¿ï¿½ Ä«ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù½ï¿½ ï¿½ï¿½ï¿½ï¿½
             GameManager.Instance.firstCard.CloseCard();
             GameManager.Instance.secondCard.CloseCard();
-
+            
             GameManager.Instance.firstCard = null;
             GameManager.Instance.secondCard = null;
         }
-
+        
         audioSource.PlayOneShot(clip);
         anim.SetBool("isOpen", true);
         front.SetActive(true);
         back.SetActive(false);
-
-<<<<<<< HEAD
+        
+        
         //firstê°€ ë¹„ì—ˆë‹¤ë©´
         if (GameManager.Instance.firstCard == null)
         {
             //firstCardì— ë‚´ ì •ë³´ë¥¼ ë„˜ê²¨ì¤€ë‹¤
             GameManager.Instance.firstCard = this;
         }
+        
         //firstCardê°€ ë¹„ì–´ìžˆì§€ ì•Šë‹¤ë©´.
         else
         {
             //secondCardì— ë‚´ ì •ë³´ë¥¼ ë„˜ê²¨ì¤€ë‹¤
             GameManager.Instance.secondCard = this;
+            
             //Mached í•¨ìˆ˜ë¥¼ í˜¸ì¶œ
-=======
-        // Ã¹ ¹øÂ° Ä«µå°¡ ºñ¾úÀ¸¸é ³ª ÀÚ½ÅÀ» Ã¹ ¹øÂ° Ä«µå·Î ¼³Á¤
-        if (GameManager.Instance.firstCard == null)
-        {
-            GameManager.Instance.firstCard = this;
-        }
-        // Ã¹ ¹øÂ° Ä«µå°¡ ÀÌ¹Ì ÀÖÀ¸¸é ³ª ÀÚ½ÅÀ» µÎ ¹øÂ° Ä«µå·Î ¼³Á¤ ÈÄ ¸ÅÄª Ã¼Å©
-        else if (GameManager.Instance.secondCard == null)
-        {
-            GameManager.Instance.secondCard = this;
->>>>>>> e5998102678c50e9d942553bd4dbdf50a4d8adb0
-            GameManager.Instance.Matched();
+            
+            // Ã¹ ï¿½ï¿½Â° Ä«ï¿½å°¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ú½ï¿½ï¿½ï¿½ Ã¹ ï¿½ï¿½Â° Ä«ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+            if (GameManager.Instance.firstCard == null)
+            {
+                GameManager.Instance.firstCard = this;
+            }
+            
+            // Ã¹ ï¿½ï¿½Â° Ä«ï¿½å°¡ ï¿½Ì¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ú½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½Â° Ä«ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½Äª Ã¼Å©
+            else if (GameManager.Instance.secondCard == null)
+            {
+                GameManager.Instance.secondCard = this;
+                
+                GameManager.Instance.Matched();
+            }
         }
     }
-
-
+    
     public void DestroyCard()
     {
         Invoke("DestroyCardInvoke", 1.0f);
