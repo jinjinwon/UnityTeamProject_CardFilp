@@ -31,6 +31,7 @@ public class Board : MonoBehaviour
             tempCard.Setting(arr[i]);
 
             tempCard.GetComponent<CardMover>().Show(new Vector2(x, y), tempCard, i);
+            tempCard.StartCoroutine(tempCard.StartLookDelay1());
         }
 
     }
