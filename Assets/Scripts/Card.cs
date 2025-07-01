@@ -52,7 +52,6 @@ public class Card : MonoBehaviour
         // 이미 열려있으면 아무것도 하지 않음
         if (GameManager.Instance.secondCard != null)
         {
-            // 현재 열린 두 장을 닫고 새로운 카드부터 다시 시작
             GameManager.Instance.firstCard.CloseCard();
             GameManager.Instance.secondCard.CloseCard();
 
@@ -65,12 +64,18 @@ public class Card : MonoBehaviour
         front.SetActive(true);
         back.SetActive(false);
 
-        // 첫 번째 카드가 비었으면 나 자신을 첫 번째 카드로 설정
+        // 폭탄 카드면 바로 시간 감소 후 종료
+        if (idx == -1)
+        {
+            GameManager.Instance.ReduceTimeByBomb();
+            DestroyCard();
+            return;
+        }
+
         if (GameManager.Instance.firstCard == null)
         {
             GameManager.Instance.firstCard = this;
         }
-        // 첫 번째 카드가 이미 있으면 나 자신을 두 번째 카드로 설정 후 매칭 체크
         else if (GameManager.Instance.secondCard == null)
         {
             GameManager.Instance.secondCard = this;
@@ -79,13 +84,14 @@ public class Card : MonoBehaviour
     }
 
 
+
     public void DestroyCard()
     {
         Invoke("DestroyCardInvoke", 1.0f);
     }
     void DestroyCardInvoke()
     {
-        Destroy(gameObject);
+        Destroy(gameObject, 1.0f);
     }
     public void CloseCard()
     {
