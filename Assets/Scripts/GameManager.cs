@@ -1,3 +1,4 @@
+using System;
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
@@ -26,7 +27,15 @@ public class GameManager : MonoBehaviour
 
     public AlarmAnim alarmAnim;
     private bool bAlarm = false;
-
+    
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+    }
+    
     void Start()
     {
         Time.timeScale = 1.0f;
