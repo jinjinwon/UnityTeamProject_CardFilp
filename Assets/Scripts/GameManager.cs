@@ -8,7 +8,6 @@ using UnityEngine.UI;
 
 
 public class GameManager : MonoBehaviour
-
 {
     public static GameManager Instance;
     public Card firstCard;
@@ -26,6 +25,12 @@ public class GameManager : MonoBehaviour
 
     public AlarmAnim alarmAnim;
     private bool bAlarm = false;
+
+    public void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+    }
 
     void Start()
     {
