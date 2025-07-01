@@ -13,8 +13,8 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public Card firstCard;
     public Card secondCard;
-    public GameObject failEndTxt;   //½ÇÆÐ ÇßÀ»¶§ ³¡ UI
-    public GameObject SuccEndTxt;   //¼º°ø ÇßÀ»¶§ ³¡ UI
+    public GameObject failEndTxt;   //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ UI
+    public GameObject SuccEndTxt;   //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ UI
     public Text timeTxt;
     public float time = 30.0f;
     AudioSource audioSource;
@@ -42,7 +42,11 @@ public class GameManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         stage = StageManager.Instance.GetCurrentStage();
 
-        time = stage.time;
+        // ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
+        if (stage != null)
+            time = stage.time;
+        else
+            time = 30.0f;
     }
 
     // Update is called once per frame
@@ -78,7 +82,7 @@ public class GameManager : MonoBehaviour
             cardCount -= 2;
             if (cardCount == 0)
             {
-                //Time.timeScale = 0.0f;    0À¸·Î ¸¸µé¸é ÆøÃà ÆÄÆ¼Å¬ÀÌ ¾È³ª¿Í¼­ ÁÖ¼®ÇÔ
+                //Time.timeScale = 0.0f;    0ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ¼Å¬ï¿½ï¿½ ï¿½È³ï¿½ï¿½Í¼ï¿½ ï¿½Ö¼ï¿½ï¿½ï¿½
                 SuccEndTxt.SetActive(true);
             }
         }
