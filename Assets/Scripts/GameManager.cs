@@ -95,6 +95,9 @@ public class GameManager : MonoBehaviour
                 SuccEndTxt.SetActive(true);
                 audioSource.PlayOneShot(complete);
                 StopAlarm();
+                
+                // Stage level increased when stage clear
+                StageManager.Instance.IncreaseStageLevel();
             }
         }
         else
