@@ -49,28 +49,35 @@ public class Card : MonoBehaviour
 
     public void OpenCard()
     {
-        if (GameManager.Instance.secondCard != null) return;
+        // 이미 열려있으면 아무것도 하지 않음
+        if (GameManager.Instance.secondCard != null)
+        {
+            // 현재 열린 두 장을 닫고 새로운 카드부터 다시 시작
+            GameManager.Instance.firstCard.CloseCard();
+            GameManager.Instance.secondCard.CloseCard();
+
+            GameManager.Instance.firstCard = null;
+            GameManager.Instance.secondCard = null;
+        }
 
         audioSource.PlayOneShot(clip);
         anim.SetBool("isOpen", true);
         front.SetActive(true);
         back.SetActive(false);
 
-        //first가 비었다면
+        // 첫 번째 카드가 비었으면 나 자신을 첫 번째 카드로 설정
         if (GameManager.Instance.firstCard == null)
         {
-            //firstCard에 내 정보를 넘겨준다
             GameManager.Instance.firstCard = this;
         }
-        //firstCard가 비어있지 않다면.
-        else
+        // 첫 번째 카드가 이미 있으면 나 자신을 두 번째 카드로 설정 후 매칭 체크
+        else if (GameManager.Instance.secondCard == null)
         {
-            //secondCard에 내 정보를 넘겨준다
             GameManager.Instance.secondCard = this;
-            //Mached 함수를 호출
             GameManager.Instance.Matched();
         }
     }
+
 
     public void DestroyCard()
     {
@@ -82,7 +89,7 @@ public class Card : MonoBehaviour
     }
     public void CloseCard()
     {
-        Invoke("CloseCardInvoke", 1.0f);
+        Invoke("CloseCardInvoke", 0.5f);
         //Invoke("CloseCardInvoke2", 1.0f);
     }
     void CloseCardInvoke()
