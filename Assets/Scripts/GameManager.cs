@@ -42,9 +42,15 @@ public class GameManager : MonoBehaviour
 
         // ���� ó��
         if (stage != null)
+        {
             time = stage.time;
+            cardCount = stage.maxCardCount;
+        }
         else
+        {
             time = 30.0f;
+            cardCount = 10;
+        }
     }
 
     // Update is called once per frame

@@ -25,17 +25,15 @@ public class StageManager : MonoBehaviour
             return _instance;
         }
     }
-
+    
     public List<Stage> Stage_List
     {
         get { return stageList; }
     }
-
-    [SerializeField] private GameObject stageDeck;
-    public int currentStage;
-    private List<Stage> stageList;
     
-
+    public int currentStage;
+    [SerializeField] private List<Stage> stageList;
+    
     private void Awake()
     {
         // ���� ��Ʈ�� ���� �� ���
@@ -57,22 +55,14 @@ public class StageManager : MonoBehaviour
     
     private void LoadStageData()
     {
-        if (stageDeck == null)
-            return;
-
-        int.TryParse(PlayerPrefs.GetString("StageLevel"), out int stageLevel);
-        var stages = stageDeck.GetComponentsInChildren<Button>();
-        stageList = new List<Stage>();
-        
-        for (int i = 0; i < stages.Length ; i++)
+        int stageLevel = PlayerPrefs.GetInt("StageLevel");
+        Button[] stageButtons = GameObject.Find("StageDeck").GetComponentsInChildren<Button>();
+        for (int i = 0; i < stageList.Count ; i++)
         {
-            var stage = stages[i].gameObject.GetComponent<Stage>();
-            if (stage.level > stageLevel)
+            if (stageList[i].level > stageLevel)
             {
-                stages[i].interactable = false;
+                stageButtons[i].interactable = false;
             }
-            
-            stageList.Add(stage);
         }
     }
     
