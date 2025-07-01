@@ -12,7 +12,7 @@ public class Board : MonoBehaviour
     private void Start()
     {
 
-        int[] arr = { 1, 1, 2, 2, 3, 3, 4, 4, 5, 5 }; // -1 == Bomb
+        int[] arr = { 1, 1, 2, 2, 3, 3, 4, 4, 5, 5 , -1}; // -1 == Bomb
         arr = arr.OrderBy(x => Random.Range(1f, 7f)).ToArray();
 
         //GameManager.Instance.cardCount = arr.Length;
