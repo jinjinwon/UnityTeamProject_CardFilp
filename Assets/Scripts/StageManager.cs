@@ -26,6 +26,11 @@ public class StageManager : MonoBehaviour
         }
     }
 
+    public List<Stage> Stage_List
+    {
+        get { return stageList; }
+    }
+
     [SerializeField] private GameObject stageDeck;
     public int currentStage;
     private List<Stage> stageList;
