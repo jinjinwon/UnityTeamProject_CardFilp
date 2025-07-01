@@ -102,7 +102,10 @@ public class GameManager : MonoBehaviour
         }
         firstCard = null;
         secondCard = null;
-
-
+    }
+    public void ReduceTimeByBomb()
+    {
+        time -= 5.0f;
+        if (time < 0f) time = 0f;
     }
 }

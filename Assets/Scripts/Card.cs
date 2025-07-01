@@ -45,65 +45,53 @@ public class Card : MonoBehaviour
             frontImage.transform.localScale = new Vector3(scaleX, scaleY, 1f);
         }
     }
-    
-    
+
+
     public void OpenCard()
     {
         // �̹� ���������� �ƹ��͵� ���� ����
         if (GameManager.Instance.secondCard != null)
         {
-            // ���� ���� �� ���� �ݰ� ���ο� ī����� �ٽ� ����
             GameManager.Instance.firstCard.CloseCard();
             GameManager.Instance.secondCard.CloseCard();
-            
+
             GameManager.Instance.firstCard = null;
             GameManager.Instance.secondCard = null;
         }
-        
+
         audioSource.PlayOneShot(clip);
         anim.SetBool("isOpen", true);
         front.SetActive(true);
         back.SetActive(false);
-        
-        
-        //first가 비었다면
+
+        // ��ź ī��� �ٷ� �ð� ���� �� ����
+        if (idx == -1)
+        {
+            GameManager.Instance.ReduceTimeByBomb();
+            DestroyCard();
+            return;
+        }
+
         if (GameManager.Instance.firstCard == null)
         {
-            //firstCard에 내 정보를 넘겨준다
             GameManager.Instance.firstCard = this;
         }
-        
-        //firstCard가 비어있지 않다면.
-        else
+        else if (GameManager.Instance.secondCard == null)
         {
-            //secondCard에 내 정보를 넘겨준다
             GameManager.Instance.secondCard = this;
-            
-            //Mached 함수를 호출
-            
-            // ù ��° ī�尡 ������� �� �ڽ��� ù ��° ī��� ����
-            if (GameManager.Instance.firstCard == null)
-            {
-                GameManager.Instance.firstCard = this;
-            }
-            
-            // ù ��° ī�尡 �̹� ������ �� �ڽ��� �� ��° ī��� ���� �� ��Ī üũ
-            else if (GameManager.Instance.secondCard == null)
-            {
-                GameManager.Instance.secondCard = this;
-                
-                GameManager.Instance.Matched();
-            }
+            GameManager.Instance.Matched();
         }
     }
-    
+
+
+
     public void DestroyCard()
     {
         Invoke("DestroyCardInvoke", 1.0f);
     }
     void DestroyCardInvoke()
     {
-        Destroy(gameObject);
+        Destroy(gameObject, 1.0f);
     }
     public void CloseCard()
     {
