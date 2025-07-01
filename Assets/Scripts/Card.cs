@@ -49,13 +49,23 @@ public class Card : MonoBehaviour
 
     public void OpenCard()
     {
-        if (GameManager.Instance.secondCard != null) return;
+        // ¿ÃπÃ ø≠∑¡¿÷¿∏∏È æ∆π´∞Õµµ «œ¡ˆ æ ¿Ω
+        if (GameManager.Instance.secondCard != null)
+        {
+            // «ˆ¿Á ø≠∏∞ µŒ ¿Â¿ª ¥›∞Ì ªı∑ŒøÓ ƒ´µÂ∫Œ≈Õ ¥ŸΩ√ Ω√¿€
+            GameManager.Instance.firstCard.CloseCard();
+            GameManager.Instance.secondCard.CloseCard();
+
+            GameManager.Instance.firstCard = null;
+            GameManager.Instance.secondCard = null;
+        }
 
         audioSource.PlayOneShot(clip);
         anim.SetBool("isOpen", true);
         front.SetActive(true);
         back.SetActive(false);
 
+<<<<<<< HEAD
         //firstÍ∞Ä ÎπÑÏóàÎã§Î©¥
         if (GameManager.Instance.firstCard == null)
         {
@@ -68,9 +78,21 @@ public class Card : MonoBehaviour
             //secondCardÏóê ÎÇ¥ Ï†ïÎ≥¥Î•º ÎÑòÍ≤®Ï§ÄÎã§
             GameManager.Instance.secondCard = this;
             //Mached Ìï®ÏàòÎ•º Ìò∏Ï∂ú
+=======
+        // √π π¯¬∞ ƒ´µÂ∞° ∫Òæ˙¿∏∏È ≥™ ¿⁄Ω≈¿ª √π π¯¬∞ ƒ´µÂ∑Œ º≥¡§
+        if (GameManager.Instance.firstCard == null)
+        {
+            GameManager.Instance.firstCard = this;
+        }
+        // √π π¯¬∞ ƒ´µÂ∞° ¿ÃπÃ ¿÷¿∏∏È ≥™ ¿⁄Ω≈¿ª µŒ π¯¬∞ ƒ´µÂ∑Œ º≥¡§ »ƒ ∏≈ƒ™ √º≈©
+        else if (GameManager.Instance.secondCard == null)
+        {
+            GameManager.Instance.secondCard = this;
+>>>>>>> e5998102678c50e9d942553bd4dbdf50a4d8adb0
             GameManager.Instance.Matched();
         }
     }
+
 
     public void DestroyCard()
     {
@@ -82,7 +104,7 @@ public class Card : MonoBehaviour
     }
     public void CloseCard()
     {
-        Invoke("CloseCardInvoke", 1.0f);
+        Invoke("CloseCardInvoke", 0.5f);
         //Invoke("CloseCardInvoke2", 1.0f);
     }
     void CloseCardInvoke()
