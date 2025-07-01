@@ -37,7 +37,7 @@ public class Card : MonoBehaviour
             float spriteHeight = frontImage.sprite.bounds.size.y;
 
             float targetWidth = 1f;  
-            float targetHeight = 1f;
+            float targetHeight = 1.2f;
 
             float scaleX = targetWidth / spriteWidth;
             float scaleY = targetHeight / spriteHeight;
