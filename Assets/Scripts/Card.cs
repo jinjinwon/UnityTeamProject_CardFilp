@@ -17,13 +17,11 @@ public class Card : MonoBehaviour
     public SpriteRenderer frontImage;
 
     public Vector2 fixedSize = new Vector2(1f, 1f);
-    
-    private float closedSpeed = 1.0f;
+
 
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        closedSpeed = StageManager.Instance.GetCurrentStage().closedSpeed;
     }
 
     public void Setting(int number)
@@ -38,8 +36,8 @@ public class Card : MonoBehaviour
             float spriteWidth = frontImage.sprite.bounds.size.x;
             float spriteHeight = frontImage.sprite.bounds.size.y;
 
-            float targetWidth = 1f;  
-            float targetHeight = 1.2f;
+            float targetWidth = 0.8f;
+            float targetHeight = 1f;
 
             float scaleX = targetWidth / spriteWidth;
             float scaleY = targetHeight / spriteHeight;
@@ -58,38 +56,33 @@ public class Card : MonoBehaviour
         front.SetActive(true);
         back.SetActive(false);
 
-        //first�� ����ٸ�
+        //first가 비었다면
         if (GameManager.Instance.firstCard == null)
         {
-            //firstCard�� �� ������ �Ѱ��ش�
+            //firstCard에 내 정보를 넘겨준다
             GameManager.Instance.firstCard = this;
         }
-        //firstCard�� ������� �ʴٸ�.
+        //firstCard가 비어있지 않다면.
         else
         {
-            //secondCard�� �� ������ �Ѱ��ش�
+            //secondCard에 내 정보를 넘겨준다
             GameManager.Instance.secondCard = this;
-            //Mached �Լ��� ȣ��
+            //Mached 함수를 호출
             GameManager.Instance.Matched();
         }
     }
 
     public void DestroyCard()
     {
-        Invoke("DestroyCardInvoke", closedSpeed);
+        Invoke("DestroyCardInvoke", 1.0f);
     }
     void DestroyCardInvoke()
     {
         Destroy(gameObject);
     }
-
-    [Header("Invoke Ÿ�̹� ���� ����")]
-    [Header("Invoke Ÿ�̹� ���� ����")]
-    public float ftimer = 0.1f;
     public void CloseCard()
     {
-
-        Invoke("CloseCardInvoke", ftimer);
+        Invoke("CloseCardInvoke", 1.0f);
         //Invoke("CloseCardInvoke2", 1.0f);
     }
     void CloseCardInvoke()
@@ -98,7 +91,7 @@ public class Card : MonoBehaviour
         //anim.SetBool("isClose", true);
         front.SetActive(false);
         back.SetActive(true);
-        Invoke("CloseCardInvoke2", ftimer);
+        Invoke("CloseCardInvoke2", 1.0f);
     }
     void CloseCardInvoke2()
     {
