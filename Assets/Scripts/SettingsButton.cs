@@ -7,6 +7,7 @@ using Unity.VisualScripting;
 public class SettingsButton : MonoBehaviour
 {
     public GameObject SettingsOpen;
+    public GameObject BackButton;
     
     // Start is called before the first frame update
     void Start()
@@ -23,8 +24,14 @@ public class SettingsButton : MonoBehaviour
     public void ClickSetting()
     {
         SettingsOpen.SetActive(true);
+        Time.timeScale = 0f;
     }
-
+    public void ClickBack()
+    {
+        SettingsOpen.SetActive(false);
+        Time.timeScale = 1f;
+        
+    }
 
 
 
