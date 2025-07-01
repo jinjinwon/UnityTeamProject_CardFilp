@@ -82,9 +82,15 @@ public class Card : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+    [Header("Invoke Ÿ�̹� ���� ����")]
+    public float ftimer = 0.1f;
     public void CloseCard()
     {
+<<<<<<< HEAD
         Invoke("CloseCardInvoke", closedSpeed);
+=======
+>>>>>>> fdfa2eb568adcca23ee0c85b78951b80d24fc1db
         //Invoke("CloseCardInvoke2", 1.0f);
     }
     void CloseCardInvoke()
@@ -93,7 +99,6 @@ public class Card : MonoBehaviour
         //anim.SetBool("isClose", true);
         front.SetActive(false);
         back.SetActive(true);
-        Invoke("CloseCardInvoke2", 1.0f);
     }
     void CloseCardInvoke2()
     {
