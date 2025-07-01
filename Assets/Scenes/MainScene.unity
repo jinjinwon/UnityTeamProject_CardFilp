@@ -5446,6 +5446,7 @@ MonoBehaviour:
   alarm: {fileID: 0}
   cardCount: 0
   stage: {fileID: 0}
+  complete: {fileID: 8300000, guid: 48e471a23124a124ebf09f757b194a0f, type: 3}
 --- !u!4 &1149106819
 Transform:
   m_ObjectHideFlags: 0
