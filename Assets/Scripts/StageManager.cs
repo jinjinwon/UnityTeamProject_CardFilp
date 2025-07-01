@@ -46,11 +46,12 @@ public class StageManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        LoadStageData();
     }
     
     private void Start()
     {
-        LoadStageData();
+        //LoadStageData();
     }
     
     private void LoadStageData()
@@ -77,7 +78,11 @@ public class StageManager : MonoBehaviour
     
     public void IncreaseStageLevel()
     {
+        if (currentStage < stageList.Count) currentStage++;
         
-        PlayerPrefs.SetInt("StageLevel", currentStage + 1);
+        if (PlayerPrefs.GetInt("StageLevel") < currentStage)
+        {
+            PlayerPrefs.SetInt("StageLevel", currentStage);
+        }
     }
 }
