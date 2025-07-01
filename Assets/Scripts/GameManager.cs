@@ -23,18 +23,9 @@ public class GameManager : MonoBehaviour
     public int cardCount = 0;
     public Stage stage;
     public AudioClip complete;
-    void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else if (Instance != this)
-        {
-            Destroy(gameObject);
-        }
-    }
+
+    public AlarmAnim alarmAnim;
+    private bool bAlarm = false;
 
     void Start()
     {
@@ -54,13 +45,17 @@ public class GameManager : MonoBehaviour
     {
         if(cardCount != 0) { time -= Time.deltaTime; }
         timeTxt.text = time.ToString("N2");
+
         if (time <= 0.0f)
         {
             Time.timeScale = 0.0f;
             failEndTxt.SetActive(true);
+            StopAlarm();
         }
-        if (time > 25f)
+
+        if (time < 5f && !bAlarm)
         {
+            bAlarm = true;
             PlayAlarm();
         }
     }
@@ -70,6 +65,14 @@ public class GameManager : MonoBehaviour
         audioSource.clip = alarm;
         audioSource.loop = true;
         audioSource.Play();
+
+        alarmAnim.AlarmStart();
+    }
+
+    private void StopAlarm()
+    {
+        audioSource.Stop();
+        alarmAnim.AlarmStop();
     }
 
     public void Matched()
@@ -80,11 +83,13 @@ public class GameManager : MonoBehaviour
             firstCard.DestroyCard();
             secondCard.DestroyCard();
             cardCount -= 2;
+
             if (cardCount == 0)
             {
                 //Time.timeScale = 0.0f;    0���� ����� ���� ��ƼŬ�� �ȳ��ͼ� �ּ���
                 SuccEndTxt.SetActive(true);
                 audioSource.PlayOneShot(complete);
+                StopAlarm();
             }
         }
         else
