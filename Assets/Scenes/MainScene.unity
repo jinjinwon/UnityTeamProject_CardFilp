@@ -5443,6 +5443,7 @@ GameObject:
   - component: {fileID: 1149106819}
   - component: {fileID: 1149106818}
   - component: {fileID: 1149106820}
+  - component: {fileID: 1149106821}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -5469,10 +5470,11 @@ MonoBehaviour:
   timeTxt: {fileID: 1787993593145063994}
   time: 30
   clip: {fileID: 0}
-  alarm: {fileID: 0}
+  alarm: {fileID: 8300000, guid: 428995646dba39e489c70f3b9cb96ab8, type: 3}
   cardCount: 0
   stage: {fileID: 0}
   complete: {fileID: 8300000, guid: 48e471a23124a124ebf09f757b194a0f, type: 3}
+  alarmAnim: {fileID: 1149106821}
 --- !u!4 &1149106819
 Transform:
   m_ObjectHideFlags: 0
@@ -5584,6 +5586,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1149106821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1149106817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff2f4d8bc32e983479037381b047b3c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alarmColor: {r: 1, g: 0, b: 0, a: 1}
+  duration: 0.5
 --- !u!1 &1364262014
 GameObject:
   m_ObjectHideFlags: 0
