@@ -9,7 +9,7 @@ public class RtanSpwaner : MonoBehaviour
     private void Start()
     {
         Initialized();
-        InvokeRepeating("Spawn", 5f, 10f);
+        InvokeRepeating("Spawn", 1f, 10f);
     }
 
     private void Initialized()
