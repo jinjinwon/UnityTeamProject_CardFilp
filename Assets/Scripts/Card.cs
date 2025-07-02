@@ -20,6 +20,8 @@ public class Card : MonoBehaviour
 
     public static bool canClick = true;
 
+    public GameObject bombPrefab;
+
 
     private void Start()
     {
@@ -72,9 +74,11 @@ public class Card : MonoBehaviour
 
         if (idx == 0)
         {
+            GameObject bomb = Instantiate(bombPrefab);
             GameManager.Instance.ReduceTimeByBomb();
             CloseCard();
             DestroyCard();
+            Destroy(bomb, 2f);
         }
 
 

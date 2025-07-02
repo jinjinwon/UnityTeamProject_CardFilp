@@ -393,6 +393,7 @@ MonoBehaviour:
   clip: {fileID: 8300000, guid: 5a1d7cb054c125248b8fb6217e5d770f, type: 3}
   frontImage: {fileID: 1834314815634406134}
   fixedSize: {x: 1, y: 1}
+  bombPrefab: {fileID: 4017058789957433541, guid: 28edcab74554d2c42b54ddb082a3d46b, type: 3}
 --- !u!95 &26157001020081386
 Animator:
   serializedVersion: 5
