@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     AudioSource audioSource;
     public AudioClip clip;
     public AudioClip alarm;
+    public AudioClip gameOverSoundClip;
     public int cardCount = 0;
     public Stage stage;
     public AudioClip complete;
@@ -27,6 +28,7 @@ public class GameManager : MonoBehaviour
 
     public AlarmAnim alarmAnim;
     private bool bAlarm = false;
+    private bool isOver = false;
 
     [SerializeField] private ResultPanel resultPanel;
 
@@ -61,7 +63,9 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(cardCount != 0)
+         if (Input.GetKeyDown(KeyCode.Space)) time -= 1f;
+
+        if (cardCount != 0)
         { 
             time -= Time.deltaTime;
         }
@@ -88,18 +92,19 @@ public class GameManager : MonoBehaviour
             timeTxt.text = time.ToString("N2");
         }
 
-        if (time <= 0.0f)
-        {
-            Time.timeScale = 0.0f;
-            //failEndTxt.SetActive(true);
-            resultPanel.Show(false, "실패..");
-            StopAlarm();
-        }
-
         if (time < 5f && !bAlarm)
         {
             bAlarm = true;
             PlayAlarm();
+        }
+        if (time <= 0.0f && !isOver)
+        {
+            isOver = true;
+            Time.timeScale = 0.0f;
+            //failEndTxt.SetActive(true);
+            resultPanel.Show(false, "실패..");
+            StopAlarm();
+            PlayGameOverSound();
         }
     }
 
@@ -116,6 +121,12 @@ public class GameManager : MonoBehaviour
     {
         audioSource.Stop();
         alarmAnim.AlarmStop();
+        audioSource.loop = false;
+    }
+    private void PlayGameOverSound()
+    {
+        //audioSource.clip = gameOverSoundClip;
+        audioSource.PlayOneShot(gameOverSoundClip);
     }
 
     public void Matched()

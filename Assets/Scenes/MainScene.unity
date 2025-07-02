@@ -5693,6 +5693,7 @@ MonoBehaviour:
   time: 30
   clip: {fileID: 8300000, guid: 73f239f214e259046ae85fad42b246eb, type: 3}
   alarm: {fileID: 8300000, guid: 428995646dba39e489c70f3b9cb96ab8, type: 3}
+  gameOverSoundClip: {fileID: 8300000, guid: ad3e61f1c06ec504381a76bf3f2225e1, type: 3}
   cardCount: 0
   stage: {fileID: 0}
   complete: {fileID: 8300000, guid: 48e471a23124a124ebf09f757b194a0f, type: 3}

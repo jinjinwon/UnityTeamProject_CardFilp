@@ -3,7 +3,19 @@ guid: 8cf89e1fe5e201545bb9dd848f7411f9
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - firstCard: {instanceID: 0}
+  - secondCard: {instanceID: 0}
+  - failEndTxt: {instanceID: 0}
+  - SuccEndTxt: {instanceID: 0}
+  - timeTxt: {instanceID: 0}
+  - clip: {instanceID: 0}
+  - alarm: {instanceID: 0}
+  - gameOverSoundClip: {fileID: 8300000, guid: ad3e61f1c06ec504381a76bf3f2225e1, type: 3}
+  - stage: {instanceID: 0}
+  - complete: {instanceID: 0}
+  - alarmAnim: {instanceID: 0}
+  - resultPanel: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
