@@ -129,8 +129,8 @@ public class GameManager : MonoBehaviour
             {
                 //Time.timeScale = 0.0f;   
                 SuccEndTxt.SetActive(true);
-                audioSource.PlayOneShot(complete);
                 StopAlarm();
+                audioSource.PlayOneShot(complete);
 
                 resultPanel.Show(true, "성공!");
 
