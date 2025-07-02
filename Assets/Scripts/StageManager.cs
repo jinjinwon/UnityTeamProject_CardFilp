@@ -62,7 +62,7 @@ public class StageManager : MonoBehaviour
         {
             if (stageList[i].level > stageLevel)
             {
-                stageButtons[i].interactable = false;
+                //stageButtons[i].interactable = false;
             }
         }
     }
