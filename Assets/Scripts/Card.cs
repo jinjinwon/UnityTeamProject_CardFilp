@@ -13,6 +13,7 @@ public class Card : MonoBehaviour
 
     AudioSource audioSource;
     public AudioClip clip;
+    public AudioClip bombSoundClip;
 
     public SpriteRenderer frontImage;
 
@@ -78,6 +79,7 @@ public class Card : MonoBehaviour
         if (idx == 0)
         {
             GameObject bomb = Instantiate(bombPrefab);
+            audioSource.PlayOneShot(bombSoundClip);
             GameManager.Instance.ReduceTimeByBomb();
             CloseCard();
             DestroyCard();
