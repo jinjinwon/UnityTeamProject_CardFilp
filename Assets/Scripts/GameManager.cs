@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     AudioSource audioSource;
     public AudioClip clip;
     public AudioClip alarm;
+    public AudioClip notSame;
     public AudioClip gameOverSoundClip;
     public int cardCount = 0;
     public Stage stage;
@@ -155,8 +156,10 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            
             firstCard.CloseCard();
             secondCard.CloseCard();
+            audioSource.PlayOneShot(notSame);
         }
         firstCard = null;
         secondCard = null;
