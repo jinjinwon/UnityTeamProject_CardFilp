@@ -27,8 +27,12 @@ public class ResultPanel : MonoBehaviour
             // 이 부분 아직 오류 있으니 일단 예외처리
             if (StageManager.Instance.Stage_List != null)
             {
-                if (StageManager.Instance.currentStage == StageManager.Instance.Stage_List.Count)
-                {
+                // RESULT가 TRUE로 들어온 경우면 ㅇㅇ;
+                StageManager.Instance.IncreaseStageLevel();
+
+                // 마지막 스테이지와 같은 경우 ㅇㅇ
+                if (GameManager.Instance.stage == StageManager.Instance.Stage_List[StageManager.Instance.Stage_List.Count - 1])
+                {                    
                     btn_Next.gameObject.SetActive(false);
                     btn_Retry.gameObject.SetActive(true);
                     btn_Prev.gameObject.SetActive(true);
@@ -61,7 +65,6 @@ public class ResultPanel : MonoBehaviour
     }
     public void OnClickNext()
     {
-        StageManager.Instance.IncreaseStageLevel();
         SceneManager.LoadScene("MainScene");
     }
 

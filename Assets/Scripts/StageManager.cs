@@ -78,7 +78,7 @@ public class StageManager : MonoBehaviour
     
     public void IncreaseStageLevel()
     {
-        if (currentStage < stageList.Count) currentStage++;
+        if (currentStage < stageList.Count - 1) currentStage++;
         
         if (PlayerPrefs.GetInt("StageLevel") < currentStage)
         {
