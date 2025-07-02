@@ -15,13 +15,15 @@ public class GameManager : MonoBehaviour
     public GameObject failEndTxt;   //���� ������ �� UI
     public GameObject SuccEndTxt;   //���� ������ �� UI
     public Text timeTxt;
-    public float time = 30.0f;
+    public float time = 33.0f;
     AudioSource audioSource;
     public AudioClip clip;
     public AudioClip alarm;
     public int cardCount = 0;
     public Stage stage;
     public AudioClip complete;
+    string overedTime1 = "30.00";
+    string overedTime2 = "20.00";
 
     public AlarmAnim alarmAnim;
     private bool bAlarm = false;
@@ -48,16 +50,41 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            time = 30.0f;
+            time = 33.0f;
             cardCount = 10;
         }
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(cardCount != 0) { time -= Time.deltaTime; }
-        timeTxt.text = time.ToString("N2");
+        if(cardCount != 0)
+        { 
+            time -= Time.deltaTime;
+        }
+
+        //2,4스테이지인 경우 20초까지 시간 고정
+        if (stage.level == 1 || stage.level == 3)
+        {
+            if (time >= 20.0f)
+            {
+                timeTxt.text = overedTime2;
+            }
+            else
+            {
+                timeTxt.text = time.ToString("N2");
+            }
+        }
+        //1,3스테이지 30초까지 시간 고정
+        else if (time >= 30.0f)
+        {
+            timeTxt.text = overedTime1;
+        }
+        else
+        {
+            timeTxt.text = time.ToString("N2");
+        }
 
         if (time <= 0.0f)
         {

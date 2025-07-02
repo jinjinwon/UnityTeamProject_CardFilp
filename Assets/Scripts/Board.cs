@@ -36,7 +36,15 @@ public class Board : MonoBehaviour
                 tempCard.Setting(arr[i]);
 
                 tempCard.GetComponent<CardMover>().Show(new Vector2(x, y), tempCard, i);
-                //tempCard.StartCoroutine(tempCard.StartLookDelay1());
+                //레벨1,3은 3초공개 레벨2,4는 2초공개 정상작동
+                if (stage.level == 0 || stage.level == 2)
+                {
+                    tempCard.StartCoroutine(tempCard.StartLookDelay1());
+                }
+                else
+                {
+                    tempCard.StartCoroutine(tempCard.StartLookDelay2());
+                }
             }
         }
         else if (stage.level > 1)
@@ -54,17 +62,18 @@ public class Board : MonoBehaviour
 
                 Card tempCard = go.GetComponent<Card>();
                 tempCard.Setting(arr[i]);
-
                 tempCard.GetComponent<CardMover>().Show(new Vector2(x, y), tempCard, i);
-                //tempCard.StartCoroutine(tempCard.StartLookDelay1());
+                //1스테이지 제외 2초보여주기 코루틴 정상작동
+                if (stage.level == 2)
+                {
+                    tempCard.StartCoroutine(tempCard.StartLookDelay1());
+                }
+                else
+                {
+                    tempCard.StartCoroutine(tempCard.StartLookDelay2());
+                }
             }
         }
-
-
-        //GameManager.Instance.cardCount = arr.Length;
-
-
-
     }
-
+        //GameManager.Instance.cardCount = arr.Length;
 }
