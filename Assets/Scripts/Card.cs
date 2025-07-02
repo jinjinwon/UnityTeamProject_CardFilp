@@ -53,10 +53,13 @@ public class Card : MonoBehaviour
 
     public void OpenCard()
     {
-        if (!canClick) return; // 클릭 잠금 시 무시
+        if (GameManager.Instance.isMatching)
+            return;
+
+        //if (!canClick) return; // 클릭 잠금 시 무시
 
         // 애니메이션 중엔 클릭 금지
-        canClick = false;
+        //canClick = false;
 
         if (GameManager.Instance.secondCard != null)
         {
@@ -107,6 +110,7 @@ public class Card : MonoBehaviour
     }
     void DestroyCardInvoke()
     {
+        GameManager.Instance.isMatching = false;
         Destroy(gameObject);
     }
     public void CloseCard()
@@ -120,10 +124,11 @@ public class Card : MonoBehaviour
         //anim.SetBool("isClose", true);
         front.SetActive(false);
         back.SetActive(true);
-        Invoke("CloseCardInvoke2", 1.0f);
+        Invoke("CloseCardInvoke2", 0.2f);
     }
     void CloseCardInvoke2()
     {
+        GameManager.Instance.isMatching = false;
         anim.SetBool("isClose", false);
     }
     //카드 미리보기함수

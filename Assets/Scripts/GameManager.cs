@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private ResultPanel resultPanel;
 
+    public bool isMatching = false;
+
     public void Awake()
     {
         if (Instance == null)
@@ -118,6 +120,8 @@ public class GameManager : MonoBehaviour
 
     public void Matched()
     {
+        isMatching = true;
+
         if (firstCard.idx == secondCard.idx)
         {
             audioSource.PlayOneShot(clip);
