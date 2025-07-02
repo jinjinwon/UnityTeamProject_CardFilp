@@ -9,4 +9,5 @@ public class Stage : ScriptableObject
     public int maxCardCount;
     public float time;
     public float closedSpeed;
+    public int[] cardCount;
 }

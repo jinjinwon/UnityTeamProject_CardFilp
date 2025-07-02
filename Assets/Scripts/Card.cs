@@ -70,6 +70,14 @@ public class Card : MonoBehaviour
         front.SetActive(true);
         back.SetActive(false);
 
+        if (idx == 0)
+        {
+            GameManager.Instance.ReduceTimeByBomb();
+            CloseCard();
+            DestroyCard();
+        }
+
+
         if (GameManager.Instance.firstCard == null)
         {
             GameManager.Instance.firstCard = this;
