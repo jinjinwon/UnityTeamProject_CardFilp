@@ -5691,7 +5691,7 @@ MonoBehaviour:
   SuccEndTxt: {fileID: 68112710}
   timeTxt: {fileID: 1787993593145063994}
   time: 30
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 73f239f214e259046ae85fad42b246eb, type: 3}
   alarm: {fileID: 8300000, guid: 428995646dba39e489c70f3b9cb96ab8, type: 3}
   cardCount: 0
   stage: {fileID: 0}
